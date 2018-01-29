@@ -1,0 +1,10 @@
+<div class="container">
+    <h1>Product List</h1>
+    <div class="list">
+        <p *ngFor='let prod of products'>
+            <img [src]="[prod.images]"> <br> {{prod.title}} <br> {{prod.price}} <br>
+            <button (click)='onEdit(prod._id)' class="btn btn-warning"> Edit </button>
+            <button (click)='onDelete(prod._id)' class="btn btn-danger">Delete</button>
+        </p>
+    </div>
+</div>
