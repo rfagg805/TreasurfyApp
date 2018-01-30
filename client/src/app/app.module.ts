@@ -16,8 +16,6 @@ import { Router } from '@angular/router';
 import { CreateuserComponent } from './createuser/createuser.component';
 import { LoginuserComponent } from './loginuser/loginuser.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
