@@ -6,15 +6,18 @@ import { ProductComponent } from './product/product.component';
 import { NewComponent } from './new/new.component';
 import { EditComponent } from './edit/edit.component';
 import { Router } from '@angular/router';
-import { UserComponent } from './user/user.component';
+import { CreateuserComponent } from './createuser/createuser.component';
+import { LoginuserComponent } from './loginuser/loginuser.component';
+
 
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent},
-  { path: 'product', component:ProductComponent},
-  { path: 'product/new', component: NewComponent},
-  { path: 'product/edit/:id', component: EditComponent},
-  { path: 'user', component: UserComponent},
+  { path: 'products', component:ProductComponent},
+  { path: 'products/new', component: NewComponent},
+  { path: 'products/edit/:id', component: EditComponent},
+  { path: 'login', component: LoginuserComponent},
+  { path: 'signup', component: CreateuserComponent},
 ];
 
 @NgModule({

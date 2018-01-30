@@ -1,13 +1,13 @@
 <div class="container">
-    <h1>
-        PPM - Project Product Management</h1>
-
-    <a [routerLink]="['']">Home</a>
-    <span>|</span>
-    <a [routerLink]="['product']">Product List</a>
-    <span>|</span>
-    <a [routerLink]="['product/new']">Product Creation</a>
-    <span>|</span>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary rounded">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/signup']">Sign Up</a>
+                <a class="nav-link" [routerLink]="['/login']">Log In</a>
+                <a class="nav-link">Sign Out</a>
+            </li>
+        </ul>
+    </nav>
+    <router-outlet></router-outlet>
 </div>
 
-<router-outlet></router-outlet>
