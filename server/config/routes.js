@@ -20,7 +20,7 @@ module.exports = function(app) {
         products.update(req, res);
     })
 
-    app.delete('/products/:id', function(req, res) {
+    app.delete('/product/:id', function(req, res) {
         products.delete(req, res)
     })
 

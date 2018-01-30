@@ -13,7 +13,8 @@ import { ProductComponent } from './product/product.component';
 import { EditComponent } from './edit/edit.component';
 import { NewComponent } from './new/new.component';
 import { Router } from '@angular/router';
-import { UserComponent } from './user/user.component';
+import { CreateuserComponent } from './createuser/createuser.component';
+import { LoginuserComponent } from './loginuser/loginuser.component';
 
 
 
@@ -24,7 +25,8 @@ import { UserComponent } from './user/user.component';
     ProductComponent,
     EditComponent,
     NewComponent,
-    UserComponent,
+    CreateuserComponent,
+    LoginuserComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
 var SALT_WORK_FACTOR = 10;
+var validateEmail= function(email) {
+    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return re.test(email)
+}
 
 const UserSchema = new mongoose.Schema({
     name: {
@@ -9,12 +13,6 @@ const UserSchema = new mongoose.Schema({
         required: [true, 'Title is required.'],
         minlength: [2, 'name need to be longer than 2.'],
     },
-
-    validateEmail(email) {
-        var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        return re.test(email)
-    },
-
     email: {
         type: String,
         trim: true,
