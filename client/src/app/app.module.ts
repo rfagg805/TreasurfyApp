@@ -13,7 +13,7 @@ import { ProductComponent } from './product/product.component';
 import { EditComponent } from './edit/edit.component';
 import { NewComponent } from './new/new.component';
 import { Router } from '@angular/router';
-import { UserComponent } from './user/user.component';
+
 
 
 
