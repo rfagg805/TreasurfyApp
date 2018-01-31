@@ -28,6 +28,10 @@ module.exports = function(app) {
         users.create(req, res);
     })
 
+    app.patch('/user', function(req, res) {
+        users.login(req, res);
+    })
+
     app.get('/user/:id', function(req, res) {
         users.viewOne(req, res);
     })
