@@ -4,3 +4,15 @@
     padding: 0.5em;
     margin: 0.5em;
 }
+
+.wrapper{
+    text-align: center;
+}
+
+.form-control{
+    width: 40em;
+}
+
+small{
+    color:red;
+}

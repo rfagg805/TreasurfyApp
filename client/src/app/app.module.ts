@@ -15,6 +15,8 @@ import { NewComponent } from './new/new.component';
 import { Router } from '@angular/router';
 import { CreateuserComponent } from './createuser/createuser.component';
 import { LoginuserComponent } from './loginuser/loginuser.component';
+import { ValidateEqualDirective } from './validate-equal.directive';
+
 
 
 
@@ -27,6 +29,7 @@ import { LoginuserComponent } from './loginuser/loginuser.component';
     NewComponent,
     CreateuserComponent,
     LoginuserComponent,
+    ValidateEqualDirective,
   ],
   imports: [
     BrowserModule,
