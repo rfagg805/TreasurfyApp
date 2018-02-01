@@ -23,6 +23,10 @@ export class HttpService {
     return this.authToken;
   }
 
+  decoded(token){
+    return this._http.get(`/user/${token}`)
+  }
+
   setUserLoggedIn(){
     this.isUserLoggedIn = true;
   }
@@ -62,16 +66,6 @@ export class HttpService {
     return this._http.patch('/user',user)
   }
 
-  // userLogin(user){
-  //   console.log(user);
-  //   this.user = user;
-  //   console.log(this.user);
-  // }
-
-  // getUser(){
-  //   return this.user;
-  // }
-
   storeUserData(token, user){
     localStorage.setItem('token',token);
     localStorage.setItem('user',JSON.stringify(user));
@@ -83,6 +77,7 @@ export class HttpService {
     this.authToken = null;
     this.user = null;
     localStorage.clear();
+    window.location.reload();
   }
   
   createMessage(newM){

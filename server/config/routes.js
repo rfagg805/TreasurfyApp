@@ -30,6 +30,10 @@ module.exports = function(app) {
         users.create(req, res);
     })
 
+    app.get('/user/:token', function(req, res){
+        users.decoded(req, res);
+    })
+
     app.patch('/user', function(req, res) {
         users.login(req, res);
     })

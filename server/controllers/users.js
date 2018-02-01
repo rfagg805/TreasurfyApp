@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var jwt = require('jsonwebtoken');
 var config = require('../config/database');
+var jwtDecode = require('jwt-decode');
 
 module.exports = {
 
@@ -21,7 +22,8 @@ module.exports = {
                 res.json({ message: "error retrieving Users", err: err });
             } else if (data) {
                 console.log("data",data)
-                res.json({ message: "Success", data: data })
+                const token = jwt.sign({userId: data._id}, config.secret, {expiresIn: '24h'});
+                res.json({ message: "Success", data: isMatch, token: token, user: {username: data.name} })
             }
         })
     },
@@ -57,10 +59,10 @@ module.exports = {
                 console.log(err);
                 res.json({ message: "error retrieving quotes", err: err });
             } else {
-                data.comparePassword(req.body.password, function(err, isMatch){
-                    if(err){
-                        console.log(err);
-                        res.json({ message: "error retrieving quotes", err: err });
+                data.comparePassword(req.body.password, function(isMatch){
+                    if(!isMatch){
+                        console.log(isMatch);
+                        res.json({ message: "error retrieving quotes", err: isMatch });
                     }
                     else{
                         console.log(isMatch);
@@ -70,6 +72,13 @@ module.exports = {
                 })
             }
         })
+    },
+
+    decoded: function(req, res){
+        console.log(req.params)
+        var decoded = jwtDecode(req.params.token);
+        console.log(decoded);
+        res.json({id:decoded.userId})
     }
 
 }

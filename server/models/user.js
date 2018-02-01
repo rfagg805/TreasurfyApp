@@ -41,7 +41,7 @@ const UserSchema = new mongoose.Schema({
         ref: 'Message'
     },
 
-    _product: [{
+    _products: [{
         type: Schema.Types.ObjectId,
         ref: 'Product'
     }]

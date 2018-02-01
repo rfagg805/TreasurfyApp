@@ -11,9 +11,10 @@ video {
 }
 
 .menu {
-    margin-left: 28em;
+    margin-left: 41em;
     padding: 1em;
     font-size: 19px;
+    display: inline-flex;
 }
 
 .menu li {
@@ -25,7 +26,7 @@ video {
 .menu li a {
     padding: 17px 15px;
     color: hsla(0, 0%, 100%, .8);
-    display: block;
+    display: inline-block;
     transition: background .2s ease;
 }
 

@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Product = mongoose.model('Product');
+var User = mongoose.model('User');
 var jwt = require('jsonwebtoken');
 var config = require('../config/database');
 var jwtDecode = require('jwt-decode');
@@ -37,14 +38,31 @@ module.exports = {
                 console.log(err);
                 res.json({ message: "error", err: err });
             } else {
-                res.json({ message: "Success", data: data })
+                User.findOne({_id: decoded.userId},function(err, user){
+                    if (err) {
+                        console.log(err);
+                        res.json({ message: "error", err: err });
+                    } else {
+                        user._products.push(data);
+                        User.save(function(err, data){
+                            if (err) {
+                                console.log(err);
+                                res.json({ message: "error", err: err });
+                            } else {
+                                res.json({ message: "Success", data: data })
+                            }
+                        })
+                    }
+                })
             }
         })
+        
+        
     },
 
     viewOne: function(req, res) {
         console.log("this is the id", req.params.id)
-        Product.find({ _id: req.params.id }, function(err, data) {
+        Product.findOne({ _id: req.params.id }).populate('_user').exec(function(err, data) {
             if (err) {
                 console.log(err);
                 res.json({ status: false, err: err });
