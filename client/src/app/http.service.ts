@@ -32,24 +32,24 @@ export class HttpService {
   }
 
   getAll(){
-    return this._http.get('/products')
+    return this._http.get('/product')
   }
 
   create(newP){
-    return this._http.post('/products',newP)
+    return this._http.post('/product',newP)
   }
 
   getOne(id){
-    return this._http.get(`/products/${id}`)
+    return this._http.get(`/product/${id}`)
   }
 
   update(prod){
-    return this._http.patch(`/products/${prod._id}`,prod)
+    return this._http.patch(`/product/${prod._id}`,prod)
   }
 
   delete(id){
     console.log(id)
-    return this._http.delete(`/products/${id}`)
+    return this._http.delete(`/product/${id}`)
   }
 
   createUser(user){

@@ -29,6 +29,7 @@ export class ProductComponent implements OnInit {
   onEdit(id){
     this._router.navigateByUrl(`product/edit/${id}`)
   }
+  
   onDelete(id){
     this._httpService.delete(id).subscribe(data =>{
       console.log(id)

@@ -1,15 +1,24 @@
-<div class="header">
-    <nav>
-        <div class="logo">
-            Treasurify
-        </div>
-        <ul class="menu">
-            <li [routerLink]="['products']"> Product List </li> |
-            <li [routerLink]="['products/new']"> Sell New Product </li> |
-            <li [routerLink]="['signup']"> Sign Up </li> |
-            <li [routerLink]="['login']"> Login </li>
-        </ul>
-    </nav>
-</div>
+<div class="container">
+    <title>Treasurify</title>
 
-<video src="https://d2fa3j67sd1nwo.cloudfront.net/video/homepage.7053d1c36d03.mp4" autoplay="" loop=""></video>
+    <div class="header">
+        <nav>
+            <div class="logo">
+                Treasurify
+            </div>
+            <ul class="menu">
+                <li [routerLink]="['productslist']"> Product List </li> |
+                <li [routerLink]="['products/new']"> Sell New Product </li> |
+                <div *ngIf="!login">
+                    <li [routerLink]="['signup']"> Sign Up </li> |
+                    <li [routerLink]="['login']"> Login </li>
+                </div>
+                <div *ngIf="login">
+                    <li (click)="logout()"> Sign Out </li>
+                </div>
+            </ul>
+        </nav>
+    </div>
+    <video src="https://d2fa3j67sd1nwo.cloudfront.net/video/homepage.7053d1c36d03.mp4" autoplay="" loop=""></video>
+</div>
+>>>>>>> 35ba427d8710b73f864d8ffaed6e4b06b8dad579
