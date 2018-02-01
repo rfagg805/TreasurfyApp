@@ -16,8 +16,12 @@ export class NewComponent implements OnInit {
    price: 0,
    image:""
  }
-  constructor(private _httpService:HttpService,
-  private _router: Router) { }
+ conditions = ["New","Refurbished","Used","Like New","Partially not working"]
+ category = ["Food & Beverages", "Clothing, Shoes & Accessories", "Business & Industrial","Cameras & Photo","Cell Phones & Accessories","Computers, Tablets & Networking","Electronics","Home & Garden","Musical Instruments & Gear","Collectibles","Pet Supplies","Crafts","Dolls & Bears","Toys & Hobbies","Books","DVDs & Movies","Music","Video Games"]
+  constructor(
+    private _httpService:HttpService,
+    private _router: Router
+  ) { }
 
   ngOnInit() {
   }
