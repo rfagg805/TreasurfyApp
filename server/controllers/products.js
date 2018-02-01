@@ -1,5 +1,9 @@
 var mongoose = require('mongoose');
 var Product = mongoose.model('Product');
+var jwt = require('jsonwebtoken');
+var config = require('../config/database');
+var jwtDecode = require('jwt-decode');
+
 module.exports = {
 
     viewAll: function(req, res) {
@@ -15,12 +19,24 @@ module.exports = {
 
     create: function(req, res) {
         console.log("this is Post Data", req.body)
-        Product.create(req.body, function(err, data) {
+        const token = req.body.id;
+        var decoded = jwtDecode(token);
+        console.log(decoded);
+        var product = new Product({
+            title: req.body.title,
+            price: req.body.price,
+            images: req.body.images,
+            description: req.body.description,
+            condition: req.body.condition,
+            catalog: req.body.catalog,
+            url: req.body.url,
+            _user: decoded.userId
+        })
+        product.save(function(err,data){
             if (err) {
                 console.log(err);
-                res.json({ message: "error retrieving Products", err: err });
-            } else if (data) {
-
+                res.json({ message: "error", err: err });
+            } else {
                 res.json({ message: "Success", data: data })
             }
         })
