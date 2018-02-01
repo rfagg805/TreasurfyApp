@@ -1,18 +1,22 @@
-.content{
-    display: inline-block; 
+.content {
+    display: inline-block;
     text-align: left;
     padding: 0.5em;
     margin: 0.5em;
 }
 
-.wrapper{
+.wrapper {
     text-align: center;
 }
 
-.form-control{
+.form-control {
     width: 40em;
 }
 
-small{
-    color:red;
+small {
+    color: red;
+}
+
+.nav-item {
+    color: white;
 }

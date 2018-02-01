@@ -11,9 +11,9 @@ video {
 }
 
 .menu {
-    margin-left: 30em;
+    margin-left: 28em;
     padding: 1em;
-    font-size: 20px;
+    font-size: 19px;
 }
 
 .menu li {
@@ -21,6 +21,7 @@ video {
     vertical-align: middle;
     display: inline-block;
 }
+
 .menu li a {
     padding: 17px 15px;
     color: hsla(0, 0%, 100%, .8);

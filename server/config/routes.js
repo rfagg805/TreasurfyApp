@@ -1,5 +1,6 @@
 var products = require('../controllers/products.js');
 var users = require('../controllers/users.js');
+var messages = require('../controllers/messages.js');
 var path = require('path');
 
 
@@ -39,6 +40,14 @@ module.exports = function(app) {
 
     app.patch('/user/:id', function(req, res) {
         users.update(req, res);
+    })
+
+    app.post('/message', function(req, res) {
+        users.create(req, res);
+    })
+
+    app.get('/message/:id', function(req, res) {
+        users.viewOne(req, res);
     })
 
     app.get('*', (req, res) => {

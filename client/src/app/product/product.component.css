@@ -19,3 +19,12 @@ p {
 img {
     width: 200px;
 }
+
+.nav-item {
+    color: white;
+    display: inline;
+}
+
+li img {
+    display: inline;
+}
