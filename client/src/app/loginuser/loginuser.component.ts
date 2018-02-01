@@ -26,10 +26,11 @@ export class LoginuserComponent implements OnInit {
   }
 
   login(){
-    this._httpService.findOneUser(this.user).subscribe(data =>{
+    this._httpService.login(this.user).subscribe(data =>{
       console.log(data);
       if(data['data'] == true){
-        this._httpService.userLogin(this.user.email);
+        this._httpService.setUserLoggedIn();
+        this._httpService.storeUserData(data['token'],data['user'])
         this._router.navigateByUrl('');
       }
     })

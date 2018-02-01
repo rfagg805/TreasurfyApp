@@ -38,6 +38,7 @@ export class CreateuserComponent implements OnInit {
       console.log(data);
       console.log(data['err'].code);
       if(data['data']){
+        this._httpService.setUserLoggedIn();
         this._router.navigateByUrl('');
       }
       else if(data['err'].code == 11000){

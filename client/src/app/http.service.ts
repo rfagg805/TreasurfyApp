@@ -1,12 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Headers, RequestOptions } from '@angular/http';
 
 @Injectable()
 export class HttpService {
 
+  authToken;
   user;
 
-  constructor(private _http: HttpClient) { }
+  private isUserLoggedIn;
+  private username;
+  
+  constructor(
+    private _http: HttpClient,
+  ) { 
+    this.isUserLoggedIn = false;
+  }
+
+  loadToken(){
+    const token = localStorage.getItem('token');
+    this.authToken = token;
+    return this.authToken;
+  }
+
+  setUserLoggedIn(){
+    this.isUserLoggedIn = true;
+  }
+
+  getUserLoggedIn(){
+    return this.isUserLoggedIn;
+  }
 
   getAll(){
     return this._http.get('/products')
@@ -34,16 +57,32 @@ export class HttpService {
     return this._http.post('/user',user)
   }
 
-  findOneUser(user){
+  login(user){
     console.log(user)
     return this._http.patch('/user',user)
   }
 
-  userLogin(user){
-    console.log(user);
+  // userLogin(user){
+  //   console.log(user);
+  //   this.user = user;
+  //   console.log(this.user);
+  // }
+
+  // getUser(){
+  //   return this.user;
+  // }
+
+  storeUserData(token, user){
+    localStorage.setItem('token',token);
+    localStorage.setItem('user',JSON.stringify(user));
+    this.authToken = token;
     this.user = user;
-    console.log(this.user);
-    return this.user
+  }
+
+  logout(){
+    this.authToken = null;
+    this.user = null;
+    localStorage.clear();
   }
   
 }
