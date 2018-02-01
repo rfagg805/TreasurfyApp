@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpService } from './http.service';
 import { Observable } from 'rxjs';
+import { AuthguardGuard } from './authguard.guard';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -16,6 +17,8 @@ import { Router } from '@angular/router';
 import { CreateuserComponent } from './createuser/createuser.component';
 import { LoginuserComponent } from './loginuser/loginuser.component';
 import { ValidateEqualDirective } from './validate-equal.directive';
+
+
 
 
 @NgModule({
@@ -35,7 +38,7 @@ import { ValidateEqualDirective } from './validate-equal.directive';
     HttpClientModule,
     FormsModule
   ],
-  providers: [HttpService],
+  providers: [HttpService,AuthguardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,7 @@ var products = require('../controllers/products.js');
 var users = require('../controllers/users.js');
 var path = require('path');
 
+
 module.exports = function(app) {
 
     app.get('/product', function(req, res) {

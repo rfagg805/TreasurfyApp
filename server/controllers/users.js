@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var jwt = require('jsonwebtoken');
+var config = require('../config/database');
 
 module.exports = {
 
@@ -62,7 +64,8 @@ module.exports = {
                     }
                     else{
                         console.log(isMatch);
-                        res.json({ message: "Success", data: isMatch })
+                        const token = jwt.sign({userId: data._id}, config.secret, {expiresIn: '24h'});
+                        res.json({ message: "Success", data: isMatch, token: token, user: {username: data.name} })
                     }
                 })
             }

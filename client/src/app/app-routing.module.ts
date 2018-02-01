@@ -8,12 +8,13 @@ import { EditComponent } from './edit/edit.component';
 import { Router } from '@angular/router';
 import { CreateuserComponent } from './createuser/createuser.component';
 import { LoginuserComponent } from './loginuser/loginuser.component';
+import { AuthguardGuard } from './authguard.guard';
 
 
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent},
-  { path: 'products', component:ProductComponent},
+  { path: 'products', canActivate:[AuthguardGuard], component:ProductComponent},
   { path: 'products/new', component: NewComponent},
   { path: 'products/edit/:id', component: EditComponent},
   { path: 'login', component: LoginuserComponent},
