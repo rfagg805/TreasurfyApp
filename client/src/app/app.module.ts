@@ -2,11 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { HttpService } from './http.service';
 import { Observable } from 'rxjs';
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ProductComponent } from './product/product.component';
@@ -16,6 +14,7 @@ import { Router } from '@angular/router';
 import { CreateuserComponent } from './createuser/createuser.component';
 import { LoginuserComponent } from './loginuser/loginuser.component';
 import { ValidateEqualDirective } from './validate-equal.directive';
+import { MessageComponent } from './message/message.component';
 
 
 @NgModule({
@@ -28,6 +27,7 @@ import { ValidateEqualDirective } from './validate-equal.directive';
     CreateuserComponent,
     LoginuserComponent,
     ValidateEqualDirective,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,

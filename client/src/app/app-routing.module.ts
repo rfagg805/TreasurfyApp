@@ -5,9 +5,9 @@ import { HomeComponent } from './home/home.component';
 import { ProductComponent } from './product/product.component';
 import { NewComponent } from './new/new.component';
 import { EditComponent } from './edit/edit.component';
-import { Router } from '@angular/router';
 import { CreateuserComponent } from './createuser/createuser.component';
 import { LoginuserComponent } from './loginuser/loginuser.component';
+import { MessageComponent } from './message/message.component';
 
 
 
@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'products/edit/:id', component: EditComponent},
   { path: 'login', component: LoginuserComponent},
   { path: 'signup', component: CreateuserComponent},
+  { path: 'chat', component: MessageComponent},
 ];
 
 @NgModule({

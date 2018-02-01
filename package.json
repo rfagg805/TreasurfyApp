@@ -21,7 +21,8 @@
     "moment": "^2.19.4",
     "mongoose": "^4.13.6",
     "mongoose-bcrypt": "^1.5.0",
-    "mongoose-unique-validator": "^1.0.6"
+    "mongoose-unique-validator": "^1.0.6",
+    "socket.io": "^2.0.4"
   },
   "description": ""
 }
