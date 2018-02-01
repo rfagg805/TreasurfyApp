@@ -16,6 +16,7 @@ import { CreateuserComponent } from './createuser/createuser.component';
 import { LoginuserComponent } from './loginuser/loginuser.component';
 import { ValidateEqualDirective } from './validate-equal.directive';
 import { MessageComponent } from './message/message.component';
+import { DetailComponent } from './detail/detail.component';
 
 
 
@@ -31,6 +32,7 @@ import { MessageComponent } from './message/message.component';
     LoginuserComponent,
     ValidateEqualDirective,
     MessageComponent,
+    DetailComponent,
   ],
   imports: [
     BrowserModule,

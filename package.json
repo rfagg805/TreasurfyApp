@@ -1,29 +1,29 @@
-"name": "shintoCoins",
-"version": "1.0.0",
-"main": "index.js",
-"scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-},
-"keywords": [],
-"author": "",
-"license": "ISC",
-"dependencies": {
-    "bcrypt-as-promised": "^1.1.0",
-    "body-parser": "^1.18.2",
-    "bootstrap": "^3.3.7",
-    "cors": "^2.8.4",
-    "ejs": "^2.5.7",
-    "express": "^4.16.2",
-    "express-session": "^1.15.6",
-    "express-validator": "^4.3.0",
-    "jsonwebtoken": "^8.1.1",
-    "jwt-decode": "^2.2.0",
-    "moment": "^2.19.4",
-    "mongoose": "^4.13.6",
-    "mongoose-bcrypt": "^1.5.0",
-    "mongoose-unique-validator": "^1.0.6"
-},
-"description": "" >>>
->>> > 35 ba427d8710b73f864d8ffaed6e4b06b8dad579
+{
+    "name": "treasurfy",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt-as-promised": "^1.1.0",
+        "body-parser": "^1.18.2",
+        "bootstrap": "^3.3.7",
+        "cors": "^2.8.4",
+        "ejs": "^2.5.7",
+        "express": "^4.16.2",
+        "express-session": "^1.15.6",
+        "express-validator": "^4.3.0",
+        "jsonwebtoken": "^8.1.1",
+        "jwt-decode": "^2.2.0",
+        "moment": "^2.19.4",
+        "mongoose": "^4.13.6",
+        "mongoose-bcrypt": "^1.5.0",
+        "mongoose-unique-validator": "^1.0.6"
+    },
+    "description": ""
 }

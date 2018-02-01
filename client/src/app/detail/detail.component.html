@@ -11,17 +11,3 @@
         </span>
     </ul>
 </nav>
-<div class="container">
-    <div class="p" *ngFor="let p of products">
-        <img src="{{p.images}}" alt="{{p.title}}">
-        <h4>{{p.title}}</h4>
-        <h5>$ {{p.price}}</h5>
-        <span *ngIf="login && p._user == user">
-            <button [routerLink]="['/products/edit',p._id]">Edit</button>
-            <button (click)="delete(p._id)">Delete</button>
-        </span>
-        <span *ngIf="!login">
-            <button [routerLink]="['/products',p._id]">View Detail</button>
-        </span>
-    </div>
-</div>
