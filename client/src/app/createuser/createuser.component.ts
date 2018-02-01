@@ -36,7 +36,6 @@ export class CreateuserComponent implements OnInit {
     console.log(this.user);
     this._httpService.createUser(this.user).subscribe(data=>{
       console.log(data);
-      console.log(data['err'].code);
       if(data['data']){
         this._httpService.setUserLoggedIn();
         this._router.navigateByUrl('');

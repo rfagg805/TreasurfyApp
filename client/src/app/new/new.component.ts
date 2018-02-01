@@ -11,36 +11,46 @@ import { Observable } from 'rxjs';
 export class NewComponent implements OnInit {
   errors;
   products;
- product ={
-   title: "",
-   price: 0,
-   image:""
- }
- conditions = ["New","Refurbished","Used","Like New","Partially not working"]
- category = ["Food & Beverages", "Clothing, Shoes & Accessories", "Business & Industrial","Cameras & Photo","Cell Phones & Accessories","Computers, Tablets & Networking","Electronics","Home & Garden","Musical Instruments & Gear","Collectibles","Pet Supplies","Crafts","Dolls & Bears","Toys & Hobbies","Books","DVDs & Movies","Music","Video Games"]
+  product = {
+    id:"",
+    title: "",
+    price: 0,
+    images: "",
+    description: "",
+    condition: "",
+    catalog: "",
+    url: ""
+  }
+  conditions = ["New", "Refurbished", "Used", "Like New", "Partially not working"]
+  category = ["Food & Beverages", "Clothing, Shoes & Accessories", "Business & Industrial", "Cameras & Photo", "Cell Phones & Accessories", "Computers, Tablets & Networking", "Electronics", "Home & Garden", "Musical Instruments & Gear", "Collectibles", "Pet Supplies", "Crafts", "Dolls & Bears", "Toys & Hobbies", "Books", "DVDs & Movies", "Music", "Video Games"]
   constructor(
-    private _httpService:HttpService,
+    private _httpService: HttpService,
     private _router: Router
   ) { }
 
   ngOnInit() {
+    this.product.id = this._httpService.loadToken();
+    console.log(this.product.id);
   }
-  getAll(){
-    this._httpService.getAll().subscribe(data =>{
+
+  getAll() {
+    this._httpService.getAll().subscribe(data => {
       console.log(data)
       this.products = data;
-      
+    })
+
+  }
+
+  createProduct() {
+    console.log(this.product);
+    this._httpService.create(this.product).subscribe(data => {
+      console.log(data);
+      if (data['err']) {
+        this.errors = data['err'];
+        console.log(this.errors)
+      } else {
+        this._router.navigateByUrl('productslist')
+      }
     })
   }
-create(){
-this._httpService.create(this.product).subscribe(data =>{
-  console.log(data);
-if(data['err']){
-  this.errors = data['err'];
-  console.log(this.errors)
-} else{
-  this._router.navigateByUrl('product')
-}
-})
-}
 }

@@ -33,7 +33,6 @@ const ProductSchema = new mongoose.Schema({
     },
     url: {
         type: String,
-        minlength: 1,
     },
     _user: {
         type: Schema.Types.ObjectId,
