@@ -1,0 +1,18 @@
+<div class="chatbox">
+    <div class="messages">
+        <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Create Product</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="right: 20px; position: absolute;">
+                <li class="nav-item active" [routerLink]="['products']"> Cancel</li>
+            </ul>
+        </nav>
+        <div *ngFor="let message of messages" [class.right]="message.self">
+            {{message.text}}
+        </div>
+
+    </div>
+    <div class="input-container">
+        <input type="text" class="inputtext" [(ngModel)]="replyMessage">
+        <button class="replyBtn" (click)="reply()">Send</button>
+    </div>
+</div>

@@ -85,4 +85,12 @@ export class HttpService {
     localStorage.clear();
   }
   
+  createMessage(newM){
+    console.log('aaaaa', newM)
+    return this._http.post('/message',newM)
+  }
+
+  getOneMessage(id){
+    return this._http.get(`/message/${id}`)
+  }
 }

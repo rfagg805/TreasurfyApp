@@ -1,10 +1,9 @@
-<div class="container">
-    <h1>Product List</h1>
-    <div class="list">
-        <p *ngFor='let prod of products'>
-            <img [src]="[prod.images]"> <br> {{prod.title}} <br> {{prod.price}} <br>
-            <button (click)='onEdit(prod._id)' class="btn btn-warning"> Edit </button>
-            <button (click)='onDelete(prod._id)' class="btn btn-danger">Delete</button>
-        </p>
-    </div>
-</div>
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Product List</a>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="right: 29px; position: absolute;">
+        <li class="nav-item active">
+            <img style="width: 24px" src="http://hddfhm.com/images/clipart-messages-17.gif" /> </li>
+        <li class="nav-item active" [routerLink]="['']"> LogOut </li>
+
+    </ul>
+</nav>
