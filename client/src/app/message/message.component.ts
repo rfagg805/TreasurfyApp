@@ -13,10 +13,10 @@ export class MessageComponent implements OnInit {
 
 
 messages = [{
-  "text": "Hi, I am interested in buying",
+  text: "Hi, I am interested in buying",
   "self": false
 },{
- "text": "Hi",
+ text: "Hi",
  "self": true
 }]
 replyMessage = "";

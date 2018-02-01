@@ -1,6 +1,7 @@
 <div class="chatbox">
     <div class="messages">
-        <div *ngFor="let message of messages" [class.right]="message.self" {{messages.text}}>
+        <div *ngFor="let message of messages" [class.right]="message.self">
+            {{message.text}}
         </div>
 
     </div>
