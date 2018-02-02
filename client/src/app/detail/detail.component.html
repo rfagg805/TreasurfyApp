@@ -1,48 +1,31 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-</head>
-
-<body>
-    <nav class="navbar navbar-dark bg-dark">
-        <span *ngIf="product != undefined">
-            <a class="navbar-brand" href="#">You are viewing {{product.title}}</a>
+<nav class="navbar navbar-dark bg-dark">
+    <span *ngIf="product != undefined"><a class="navbar-brand" href="#">You are viewing {{product.title}}</a></span>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="right: 29px; position: absolute;">
+        <span *ngIf="login">
+            <li class="nav-item active" [routerLink]="['']"> Home | </li>
+            <li class="nav-item active" [routerLink]="['/productslist']"> Back | </li>
+            <li class="nav-item active" (click)="logout()"> Log Out </li>
         </span>
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="right: 29px; position: absolute;">
-            <span *ngIf="login">
-                <li class="nav-item active" [routerLink]="['']"> Home | </li>
-                <li class="nav-item active" (click)="logout()"> Log Out </li>
-            </span>
-            <span *ngIf="!login">
-                <li class="nav-item active" [routerLink]="['']"> Home </li>
-            </span>
-        </ul>
-    </nav>
-    <div *ngIf="product != undefined">
-        <div class="display">
-            <div class="detail">
-                <img src="{{product.images}}" alt="{{product.title}}">
-                <span class="text">
-                    <p>Name: {{product.title}}</p>
-                    <p>Price: $ {{product.price}}</p>
-                    <P>Description: {{product.description}}</P>
-                    <P>Condition: {{product.condition}}</P>
-                    <P>Catalog: {{product.catalog}}</P>
-                    <p>Seller:
-                        <a [routerLink]="['/seller',product._user._id]">{{product._user.name}}</a>
-                        <img style="width: 24px" src="http://hddfhm.com/images/clipart-messages-17.gif"/>
-                    </p>
-                    <div id="paypal-button"></div>
+        <span *ngIf="!login">
+            <li class="nav-item active" [routerLink]="['']"> Home </li>
+        </span>
+    </ul>
+</nav>
+<div *ngIf="product != undefined">
+    <div class="display">
+        <div class="detail">
+            <img src="{{product.images}}" alt="{{product.title}}">
+            <span class="text">
+                <p>Name: {{product.title}}</p>
+                <p>Price: $ {{product.price}}</p>
+                <P>Description: {{product.description}}</P>
+                <P>Condition: {{product.condition}}</P>
+                <P>Catalog: {{product.catalog}}</P>
+                <p>Seller:<a [routerLink]="['/seller',product._user._id]">{{product._user.name}}</a></p>
+                <p><img style="width: 30px" src="http://hddfhm.com/images/clipart-messages-17.gif" [routerLink]="['/message']"/> Ask About Product</p>
+                <div id="paypal-button"></div>
                 </span>
             </div>
         </div>
     </div>
     
-    
-</body>
-
-</html>

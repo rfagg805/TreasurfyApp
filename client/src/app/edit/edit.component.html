@@ -1,16 +1,50 @@
 <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Edit Product</a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="right: 20px; position: absolute;">
-        <li class="nav-item active" [routerLink]="['']"> Cancel</li>
+        <li class="nav-item active" [routerLink]="['/productslist']"> Cancel</li>
     </ul>
 </nav>
-<div class="container">
-    <h4>Title</h4>
-    <input type="text" name="title" [(ngModel)]="product.title" placeholder="product.title">
-    <h4>Price</h4>
-    <input type="text" name="title" [(ngModel)]="product.price" placeholder="product.price">
-    <h4>Image URL</h4>
-    <input type="text" name="title" [(ngModel)]="product.image"><br>
-    <button (click)='onUpdate(product._id)' class="btn btn-primary"> Update </button>
-    <button (click)='onDelete()' class="btn btn-danger">Delete</button>
+<div class="wrapper">
+    <div class="content">
+        <div class="form-group">
+            <form (submit)="updateProduct()" #f="ngForm" novalidate>
+                <label for="title">Name</label>
+                <input type="text" name="title" [(ngModel)]="product.title" class="form-control" required #title="ngModel" minlength="4">
+                <small [hidden]="title.valid || (title.pristine && !f.submitted)">
+            <p>Title is required (minimum 4 characters)</p>
+            </small>
+                <label for="price">Price</label>
+                <input type="text" name="price" [(ngModel)]="product.price" class="form-control" required #price="ngModel">
+                <small [hidden]="price.valid || (price.pristine && !f.submitted)">
+            <p>Price is required</p>
+            </small>
+                <label for="images">Images</label>
+                <input type="text" name="images" [(ngModel)]="product.images" class="form-control" required #images="ngModel">
+                <small [hidden]="images.valid || (images.pristine && !f.submitted)">
+            <p>Images is required</p>
+            </small>
+                <label for="description">Description</label>
+                <input type="text" name="description" [(ngModel)]="product.description" class="form-control" required #description="ngModel">
+                <small [hidden]="description.valid ||  (description.pristine && !f.submitted)">
+            <p>Description is required (minimum 4 characters)</p>
+            </small>
+                <label for="condition">Condition</label>
+                <select name="condition" [(ngModel)]="product.condition" class="form-control" required #condition="ngModel">
+                <option *ngFor="let c of conditions" [ngValue]="c">{{c}}</option>
+            </select>
+                <small [hidden]="condition.valid || (condition.pristine && !f.submitted)">
+            <p>Condition is required</p>
+            </small>
+                <label for="catalog">Catalog</label>
+                <select name="catalog" [(ngModel)]="product.catalog" class="form-control" required #catalog="ngModel">
+                <option *ngFor="let c of category" [ngValue]="c">{{c}}</option>
+            </select>
+                <label for="hashtag">Hash Tag (Optional)</label>
+                <input type="text" name="url" [(ngModel)]="product.url" class="form-control">
+                <br>
+                <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Update</button>
+                <button [routerLink]="['/productslist']" class="btn btn-danger"> Cancel </button>
+            </form>
+        </div>
+    </div>
 </div>

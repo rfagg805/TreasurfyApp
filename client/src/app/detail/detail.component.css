@@ -18,7 +18,8 @@
 }
 
 img{
-    width:80%;
+    width:60%;
+    display: inline-block;
 }
 
 .text{

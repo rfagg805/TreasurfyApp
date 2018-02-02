@@ -6,11 +6,7 @@
         <ul class="menu">
 
             <li [routerLink]="['productslist']"> Product List |</li>
-            <li> Google map |
-                <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)">
-                    <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
-                </agm-map>
-            </li>
+
             <span *ngIf="!login">
                 <li [routerLink]="['signup']"> Sign Up | </li> 
                 <li [routerLink]="['login']"> Login | </li>
