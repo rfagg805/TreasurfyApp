@@ -7,14 +7,43 @@
 }
 
 .container {
-    width: 30%;
+    width: 50%;
+    min-width: 300px;
+    max-width: 800px;
     border: 1px solid black;
     margin: 0;
     padding: 0;
     text-align: center;
-    margin-left: 30%;
+    margin: 0 auto;
 }
 
 #text {
     display: inline;
+}
+
+.messages {
+    height: calc(100vh - 135px);
+}
+
+.me {
+    border: 1px solid darkgrey;
+    border-radius: 22px;
+    background-color: darkgrey;
+    text-align: right;
+    float: right;
+    clear: both;
+    padding: 2px 6px;
+    margin: 5px;
+}
+
+.friend {
+    text-align: left;
+    float: left;
+    border: 1px solid darkgrey;
+    border-radius: 22px;
+    background-color: darkgrey;
+    color: white;
+    clear: both;
+    padding: 2px 6px;
+    margin: 5px;
 }
