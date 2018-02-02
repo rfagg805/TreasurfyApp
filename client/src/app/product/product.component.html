@@ -1,9 +1,12 @@
 <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Product List</a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="right: 29px; position: absolute;">
-        <span *ngIf="login">
+        <span *ngIf="login && loginuser">
             <li class="nav-item active">
-                <img style="width: 24px" src="http://hddfhm.com/images/clipart-messages-17.gif" /> </li>
+                <span *ngIf="loginuser.picture != ''"><a [routerLink]="['/userprofile',loginuser._id]"><img class="navpic" src="{{loginuser.picture}}" alt="{{loginuser.name}}"></a></span>
+                <span *ngIf="loginuser.picture == ''"><a [routerLink]="['/userprofile',loginuser._id]"><img class="navpic" src="../assets/img/q.png" alt="nopic" ></a></span>
+            </li>
+            <li class="nav-item active" [routerLink]="['/products/new']"> Sell New Product |</li>     
             <li class="nav-item active" (click)="logout()"> Log Out </li>
         </span>
         <span *ngIf="!login">
@@ -18,9 +21,9 @@
         <h5>$ {{p.price}}</h5>
         <span *ngIf="login && p._user == user">
             <button [routerLink]="['/products/edit',p._id]">Edit</button>
-            <button (click)="delete(p._id)">Delete</button>
+            <button (click)="onDelete(p._id)">Delete</button>
         </span>
-        <span *ngIf="!login">
+        <span *ngIf="!login || login && p._user != user">
             <button [routerLink]="['/products',p._id]">View Detail</button>
         </span>
     </div>

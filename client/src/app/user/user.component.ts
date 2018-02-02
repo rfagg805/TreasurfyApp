@@ -3,24 +3,20 @@ import { HttpService } from '../http.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
 })
-export class ProductComponent implements OnInit {
+export class UserComponent implements OnInit {
 
-  products;
- 
   user;
   loginuser;
   login: Boolean;
 
   constructor(private _httpService: HttpService,
   private _router: Router) { }
-  
 
   ngOnInit() {
-    this.getAll();
     this.user = this._httpService.loadToken();
     console.log(this.user);
     if(this.user != undefined){
@@ -31,35 +27,13 @@ export class ProductComponent implements OnInit {
         this.user = user['id'];
         this._httpService.viewOneUser(this.user).subscribe(user=>{
           this.loginuser = user['data'][0];
+          console.log(this.loginuser);
         })
       })
     }
     else{
       this.login = false;
     }
-  }
-
-  getAll(){
-    this._httpService.getAll().subscribe(data =>{
-      console.log(data['data'])
-      this.products = data['data'];
-      
-    })
-  }
-  onEdit(id){
-    this._router.navigateByUrl(`product/edit/${id}`)
-  }
-  
-  onDelete(id){
-    this._httpService.delete(id).subscribe(data =>{
-      console.log(id)
-    })
-    this.getAll()
-  }
-
-  logout(){
-    this._httpService.logout();
-    this._router.navigateByUrl("");
   }
 
 }

@@ -25,3 +25,7 @@ img{
     display: inline-block;
     text-align: left;
 }
+
+.pic{
+    display: inline-block;
+}
