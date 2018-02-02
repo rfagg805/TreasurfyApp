@@ -36,9 +36,9 @@ export class CreateuserComponent implements OnInit {
     console.log(this.user);
     this._httpService.createUser(this.user).subscribe(data=>{
       console.log(data);
-      console.log(data['err'].code);
       if(data['data']){
         this._httpService.setUserLoggedIn();
+        this._httpService.storeUserData(data['token'],data['user'])
         this._router.navigateByUrl('');
       }
       else if(data['err'].code == 11000){

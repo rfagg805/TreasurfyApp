@@ -1,41 +1,48 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Create User</a>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="right: 20px; position: absolute;">
+        <li class="nav-item active" [routerLink]="['']"> Home</li>
+    </ul>
+</nav>
 <div class="wrapper">
-  <div class="content">
-    <div class="form-group">
-      <h3>Sign Up</h3>
-      <form (submit)="createUser()" #f="ngForm" novalidate>
-        <label for="name">Name</label>
-        <input type="text" name="name" [(ngModel)]="user.name" class="form-control" required #name="ngModel" minlength="2">
-        <small [hidden]= "name.valid || (name.pristine && !f.submitted)">
+    <div class="content">
+        <div class="form-group">
+            <h3>Sign Up</h3>
+            <form (submit)="createUser()" #f="ngForm" novalidate>
+                <label for="name">Name</label>
+                <input type="text" name="name" [(ngModel)]="user.name" class="form-control" required #name="ngModel" minlength="2">
+                <small [hidden]="name.valid || (name.pristine && !f.submitted)">
           <p>Name is required (minimum 2 characters)</p>
         </small>
-        <label for="email">Email</label>
-        <input type="text" name="email" [(ngModel)]="user.email" class="form-control" required [pattern]=emailpattern #email="ngModel">
-        <small [hidden]= "email.valid || (email.pristine && !f.submitted)">
+                <label for="email">Email</label>
+                <input type="text" name="email" [(ngModel)]="user.email" class="form-control" required [pattern]=emailpattern #email="ngModel">
+                <small [hidden]="email.valid || (email.pristine && !f.submitted)">
           <p>Email is required and in proper format</p>
         </small>
-        <small>
+                <small>
           <p *ngIf='errors'> {{errors}}</p>
         </small>
-        <label for="password">Password</label>
-        <input type="text" name="password" [(ngModel)]="user.password" class="form-control" required #password="ngModel">
-        <small [hidden]= "password.valid || (password.pristine && !f.submitted)">
+                <label for="password">Password</label>
+                <input type="text" name="password" [(ngModel)]="user.password" class="form-control" required #password="ngModel">
+                <small [hidden]="password.valid || (password.pristine && !f.submitted)">
           <p>Password is required</p>
         </small>
-        <label for="cpassword">Confirm password</label>
-        <input type="text" name="cpassword" [(ngModel)]="user.cpassword" class="form-control" required Equalvalidate="password" #confirmPassword="ngModel">
-        <small [hidden]="confirmPassword.valid ||  (confirmPassword.pristine && !f.submitted)">
+                <label for="cpassword">Confirm password</label>
+                <input type="text" name="cpassword" [(ngModel)]="user.cpassword" class="form-control" required Equalvalidate="password" #confirmPassword="ngModel">
+                <small [hidden]="confirmPassword.valid ||  (confirmPassword.pristine && !f.submitted)">
           <p>Password mismatch</p>
         </small>
-        <label for="zipcode">Zipcode</label>
-        <input type="text" name="zipcode" [(ngModel)]="user.zipcode" class="form-control" required #zipcode="ngModel" minlength="5" maxlength="5">
-        <small [hidden]= "zipcode.valid || (zipcode.pristine && !f.submitted)">
+                <label for="zipcode">Zipcode</label>
+                <input type="text" name="zipcode" [(ngModel)]="user.zipcode" class="form-control" required #zipcode="ngModel" minlength="5" maxlength="5">
+                <small [hidden]="zipcode.valid || (zipcode.pristine && !f.submitted)">
           <p>Zipcode is required</p>
         </small>
-        <label for="picture">Picture Url (Optional)</label>
-        <input type="text" name="picture" [(ngModel)]="user.picture" class="form-control">
-        <br>
-        <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Register</button>
-      </form>
+                <label for="picture">Picture Url (Optional)</label>
+                <input type="text" name="picture" [(ngModel)]="user.picture" class="form-control">
+                <br>
+                <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Register</button>
+                <button [routerLink]="['']" class="btn btn-danger"> Cancel </button>
+            </form>
+        </div>
     </div>
-  </div>
 </div>

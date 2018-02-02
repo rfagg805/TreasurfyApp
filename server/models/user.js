@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
 var SALT_WORK_FACTOR = 10;
-var validateEmail= function(email) {
+var validateEmail = function(email) {
     var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     return re.test(email)
 }
@@ -36,6 +36,10 @@ const UserSchema = new mongoose.Schema({
         maxlength: [5, 'name need to be longer than 2.'],
 
     },
+    _message: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Message'
+    }],
 
     _products: [{
         type: Schema.Types.ObjectId,

@@ -1,10 +1,30 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Product List</a>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="right: 29px; position: absolute;">
+        <span *ngIf="login && loginuser">
+            <li class="nav-item active">
+                <span *ngIf="loginuser.picture != ''"><a [routerLink]="['/userprofile',loginuser._id]"><img class="navpic" src="{{loginuser.picture}}" alt="{{loginuser.name}}"></a></span>
+                <span *ngIf="loginuser.picture == ''"><a [routerLink]="['/userprofile',loginuser._id]"><img class="navpic" src="../assets/img/q.png" alt="nopic" ></a></span>
+            </li>
+            <li class="nav-item active" [routerLink]="['/products/new']"> Sell New Product |</li>     
+            <li class="nav-item active" (click)="logout()"> Log Out </li>
+        </span>
+        <span *ngIf="!login">
+            <li class="nav-item active" [routerLink]="['']"> Home </li>
+        </span>
+    </ul>
+</nav>
 <div class="container">
-    <h1>Product List</h1>
-    <div class="list">
-        <p *ngFor='let prod of products'>
-            <img [src]="[prod.images]"> <br> {{prod.title}} <br> {{prod.price}} <br>
-            <button (click)='onEdit(prod._id)' class="btn btn-warning"> Edit </button>
-            <button (click)='onDelete(prod._id)' class="btn btn-danger">Delete</button>
-        </p>
+    <div class="p" *ngFor="let p of products">
+        <img src="{{p.images}}" alt="{{p.title}}">
+        <h4>{{p.title}}</h4>
+        <h5>$ {{p.price}}</h5>
+        <span *ngIf="login && p._user == user">
+            <button [routerLink]="['/products/edit',p._id]">Edit</button>
+            <button (click)="onDelete(p._id)">Delete</button>
+        </span>
+        <span *ngIf="!login || login && p._user != user">
+            <button [routerLink]="['/products',p._id]">View Detail</button>
+        </span>
     </div>
 </div>

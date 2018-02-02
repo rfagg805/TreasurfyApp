@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from './http.service';
+import { ChatService } from './chat.service';
+
 
 @Component({
   selector: 'app-root',
@@ -8,18 +10,9 @@ import { HttpService } from './http.service';
 })
 export class AppComponent implements OnInit{
 
-  user;
 
-  quote = {
-    content: "",
-    author: "",
-    rating: 0,
-  }
-  datas;
-  errors;
-  rating = 0;
 
-  constructor(private _httpService : HttpService){
+  constructor(private _httpService : HttpService, chatService: ChatService){
   }
 
   ngOnInit(){

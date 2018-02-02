@@ -1,3 +1,9 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Edit Product</a>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="right: 20px; position: absolute;">
+        <li class="nav-item active" [routerLink]="['']"> Cancel</li>
+    </ul>
+</nav>
 <div class="container">
     <h4>Title</h4>
     <input type="text" name="title" [(ngModel)]="product.title" placeholder="product.title">

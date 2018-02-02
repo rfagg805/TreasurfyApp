@@ -23,6 +23,10 @@ export class HttpService {
     return this.authToken;
   }
 
+  decoded(token){
+    return this._http.get(`/user/${token}`)
+  }
+
   setUserLoggedIn(){
     this.isUserLoggedIn = true;
   }
@@ -32,24 +36,29 @@ export class HttpService {
   }
 
   getAll(){
-    return this._http.get('/products')
+    return this._http.get('/product')
+  }
+
+  viewOneUser(id){
+    console.log(id);
+    return this._http.get(`/user/view/${id}`)
   }
 
   create(newP){
-    return this._http.post('/products',newP)
+    return this._http.post('/product',newP)
   }
 
   getOne(id){
-    return this._http.get(`/products/${id}`)
+    return this._http.get(`/product/${id}`)
   }
 
   update(prod){
-    return this._http.patch(`/products/${prod._id}`,prod)
+    return this._http.patch(`/product/${prod._id}`,prod)
   }
 
   delete(id){
     console.log(id)
-    return this._http.delete(`/products/${id}`)
+    return this._http.delete(`/product/${id}`)
   }
 
   createUser(user){
@@ -57,20 +66,14 @@ export class HttpService {
     return this._http.post('/user',user)
   }
 
-  login(user){
-    console.log(user)
-    return this._http.patch('/user',user)
+  updateUser(user){
+    return this._http.patch(`/user/${user._id}`,user)
   }
 
-  // userLogin(user){
-  //   console.log(user);
-  //   this.user = user;
-  //   console.log(this.user);
-  // }
-
-  // getUser(){
-  //   return this.user;
-  // }
+  login(user){
+    console.log(user)
+    return this._http.patch('/loginuser',user)
+  }
 
   storeUserData(token, user){
     localStorage.setItem('token',token);
@@ -83,6 +86,15 @@ export class HttpService {
     this.authToken = null;
     this.user = null;
     localStorage.clear();
+    window.location.reload();
   }
   
+  createMessage(newM){
+    console.log('aaaaa', newM)
+    return this._http.post('/message',newM)
+  }
+
+  getOneMessage(id){
+    return this._http.get(`/message/${id}`)
+  }
 }

@@ -6,7 +6,7 @@ const ProductSchema = new mongoose.Schema({
     title: {
         type: String,
         required: [true, 'Title is required.'],
-        minlength: 4,
+        minlength: 2,
 
     },
     price: {
@@ -33,7 +33,6 @@ const ProductSchema = new mongoose.Schema({
     },
     url: {
         type: String,
-        minlength: 1,
     },
     _user: {
         type: Schema.Types.ObjectId,
