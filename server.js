@@ -24,6 +24,22 @@ require('./server/config/mongoose.js');
 var routes_setter = require('./server/config/routes.js');
 routes_setter(app)
 
+//socketIO
+let http = require('http');
+
+let socketIO = require('socket.io');
+
 // - - - - = = = = Server Listener = = = = - - - - 
-const port = 8000;
-app.listen(port, () => console.log(`Express server listening on port ${port}`));
+const server = app.listen(8000, function() {
+    console.log("listening on port 8000");
+});
+
+const io = require('socket.io').listen(server);
+
+io.on('connection', (socket) => {
+    console.log('user connected');
+
+    socket.on('new-message', (message) => {
+        io.emit('new-message', message);
+    });
+});

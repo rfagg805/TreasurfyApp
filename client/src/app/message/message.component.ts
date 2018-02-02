@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from '../http.service';
+import {ChatService} from '../chat.service';
 
-import * as io from 'socket.io-client';
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-message',
@@ -11,35 +13,29 @@ import * as io from 'socket.io-client';
 })
 export class MessageComponent implements OnInit {
 
-messages = [{
-  text: "Hi, I am interested in buying",
-  "self": false
-},{
- text: "Hi",
- "self": true
-}]
-replyMessage = "";
+  message: string;
+  messages: string[] = [];
+  secretCode: string;
 
-  constructor( private _httpService:HttpService) {   
+
+  constructor( private _httpService:HttpService, private chatService: ChatService) {  
+    this.secretCode = 'DONT TELL'; 
+  }
+
+  sendMessage() {
+    this.chatService.sendMessage(this.message);
+    this.message = '';
   }
 
   ngOnInit() {
+    this.chatService
+    .getMessages()
+    .subscribe((message: string) => {
+      this.messages.push(message);
+    });
   }
 
-  reply(){
-    debugger;
-    this._httpService.createMessage(this.messages).subscribe(data=>{
-      debugger;
-      console.log(data);
-      if(data['data']){
-    this.messages.push({
-      "text":this.replyMessage,
-      "self":true
-    })
-  }
-  })
-    this.replyMessage="";
-  }
+  
 }
 
 
