@@ -23,12 +23,12 @@
           <p *ngIf='errors'> {{errors}}</p>
         </small>
                 <label for="password">Password</label>
-                <input type="text" name="password" [(ngModel)]="user.password" class="form-control" required #password="ngModel">
+                <input type="password" name="password" [(ngModel)]="user.password" class="form-control" required #password="ngModel">
                 <small [hidden]="password.valid || (password.pristine && !f.submitted)">
           <p>Password is required</p>
         </small>
                 <label for="cpassword">Confirm password</label>
-                <input type="text" name="cpassword" [(ngModel)]="user.cpassword" class="form-control" required Equalvalidate="password" #confirmPassword="ngModel">
+                <input type="password" name="cpassword" [(ngModel)]="user.cpassword" class="form-control" required Equalvalidate="password" #confirmPassword="ngModel">
                 <small [hidden]="confirmPassword.valid ||  (confirmPassword.pristine && !f.submitted)">
           <p>Password mismatch</p>
         </small>
