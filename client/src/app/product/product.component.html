@@ -20,11 +20,12 @@
         <h4>{{p.title}}</h4>
         <h5>$ {{p.price}}</h5>
         <span *ngIf="login && p._user == user">
-            <button [routerLink]="['/products/edit',p._id]">Edit</button>
-            <button (click)="onDelete(p._id)">Delete</button>
+            <button class="button button5" [routerLink]="['/products',p._id]">View Detail</button>
+            <button class="button button5" [routerLink]="['/products/edit',p._id]">Edit</button>
+            <button class="button button5" (click)="onDelete(p._id)">Delete</button>
         </span>
         <span *ngIf="!login || login && p._user != user">
-            <button [routerLink]="['/products',p._id]">View Detail</button>
+            <button class="button button5" [routerLink]="['/products',p._id]">View Detail</button>
         </span>
     </div>
 </div>

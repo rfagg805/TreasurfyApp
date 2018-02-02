@@ -30,15 +30,8 @@ export class NewComponent implements OnInit {
 
   ngOnInit() {
     this.product.id = this._httpService.loadToken();
+    //This is actaully user id
     console.log(this.product.id);
-  }
-
-  getAll() {
-    this._httpService.getAll().subscribe(data => {
-      console.log(data)
-      this.products = data;
-    })
-
   }
 
   createProduct() {

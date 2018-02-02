@@ -9,12 +9,22 @@ import { ActivatedRoute} from '@angular/router';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
-  product ={
-    id: "",
+  errors;
+  products;
+  product = {
+    id:"",
     title: "",
     price: 0,
-    image:""
-  };
+    images: "",
+    description: "",
+    condition: "",
+    catalog: "",
+    url: "",
+    _user:"",
+  }
+  conditions = ["New", "Refurbished", "Used", "Like New", "Partially not working"]
+  category = ["Food & Beverages", "Clothing, Shoes & Accessories", "Business & Industrial", "Cameras & Photo", "Cell Phones & Accessories", "Computers, Tablets & Networking", "Electronics", "Home & Garden", "Musical Instruments & Gear", "Collectibles", "Pet Supplies", "Crafts", "Dolls & Bears", "Toys & Hobbies", "Books", "DVDs & Movies", "Music", "Video Games"]
+
   constructor(private _httpService:HttpService,
   private _router:Router, private _activatedroute: ActivatedRoute) { }
 
@@ -24,18 +34,19 @@ export class EditComponent implements OnInit {
       this.product.id = data['id'];
       this._httpService.getOne(this.product.id).subscribe(data => {
         console.log(data);
-        this.product = data['data'][0];
+        this.product = data['data'];
         console.log(this.product)
       })
     })
-
-    
+    this.product._user = this._httpService.loadToken();
+    //This is actaully user id
+    console.log(this.product._user); 
   }
-  //taking id and calling service for one product (data) 
 
-  onUpdate(id){
+  updateProduct(){
+    console.log(this.product);
     this._httpService.update(this.product).subscribe(data => {
-      this._router.navigateByUrl('product')
+      this._router.navigateByUrl('productslist')
     })
   }
 
