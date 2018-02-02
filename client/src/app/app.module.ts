@@ -16,10 +16,14 @@ import { CreateuserComponent } from './createuser/createuser.component';
 import { LoginuserComponent } from './loginuser/loginuser.component';
 import { ValidateEqualDirective } from './validate-equal.directive';
 import { MessageComponent } from './message/message.component';
+
+import { ChatService } from './chat.service';
+import { AgmCoreModule } from '@agm/core';
 import { DetailComponent } from './detail/detail.component';
 import { SellerdetailComponent } from './sellerdetail/sellerdetail.component';
 import { UserComponent } from './user/user.component';
 import { UsereditComponent } from './useredit/useredit.component';
+
 
 
 
@@ -44,9 +48,12 @@ import { UsereditComponent } from './useredit/useredit.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey:'AIzaSyDvj90Xz3fgsv1sQ1eWSsNr0lvXNnvF2Ys'
+    })
   ],
-  providers: [HttpService,AuthguardGuard],
+  providers: [HttpService,AuthguardGuard,ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

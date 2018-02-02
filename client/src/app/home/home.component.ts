@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { Router } from '@angular/router';
+
+import { NgModule } from '@angular/core';
+
 import { window } from 'rxjs/operators/window';
+
 
 @Component({
   selector: 'app-home',
@@ -9,6 +13,15 @@ import { window } from 'rxjs/operators/window';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  //google.api.key = AIzaSyDvj90Xz3fgsv1sQ1eWSsNr0lvXNnvF2Ys
+  latitude = 37.279518;
+  longitude = -121.867905;
+
+  onChoseLocation(event){
+    this.latitude = event.coords.lat;
+    this.longitude = event.coords.lng;
+  }
+
 
   user;
   login: Boolean;
