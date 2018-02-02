@@ -1,15 +1,19 @@
 <div class="container">
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Welcome Back! </a>
+        <a class="navbar-brand" href="#">Message! </a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="right: 20px; position: absolute;">
-            <li class="nav-item active" [routerLink]="['']"> Cancel</li>
+            <li class="nav-item active" [routerLink]="['/productslist']"> Cancel</li>
         </ul>
     </nav>
-    <div *ngFor="let message of messages">
-        {{message}}
+    <div class="messages">
+        <div *ngFor="let message of messages">
+            <span class="{{message.class}}">
+                {{message.text}}
+            </span>
+        </div>
     </div>
     <span id="text">
-    <input  id="ex3" [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage()" />
+            <textarea class="form-control" rows="1" id="message" [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage()" > </textarea>
     <button type="button" id="me" class="btn btn-secondary" (click)="sendMessage()"> Send Message </button>
 </span>
 </div>

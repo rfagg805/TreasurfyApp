@@ -1,7 +1,9 @@
 .container {
-    width: 60%;
-    border: 1px solid grey;
-    border-radius: 5px;
+    width: 100%;
+    display: inline-block;
+    margin-left: 5px;
+    ;
+    padding: 0;
 }
 
 agm-map {
@@ -16,7 +18,7 @@ agm-map {
 }
 
 img {
-    width: 100%;
+    width: 60%;
 }
 
 .nav-item {
@@ -36,17 +38,15 @@ li img {
 
 .button {
     background-color: #4CAF50;
-    /* Green */
     border: none;
     color: white;
     padding: 0.4em 0.8em;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 10px;
     margin: 0.02em 0.01em;
     -webkit-transition-duration: 0.4s;
-    /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
 }

@@ -13,18 +13,19 @@
 <div *ngIf="seller != undefined">
     <div class="display">
         <div class="detail">
-          <span class="pic">
+            <span class="pic">
             <span *ngIf="seller.picture == ''">
               <img src="../assets/img/q.png" alt="nopic">
             </span>
             <span *ngIf="seller.picture!=''">
               <img src="{{seller.picture}}" alt="{{seller.name}}">
             </span>
-          </span>
-          <span class="text">
-              <p>Name: {{seller.name}} <img style="width: 24px" src="http://hddfhm.com/images/clipart-messages-17.gif"/></p>
+            </span>
+            <span class="text">
+              <p>Name: {{seller.name}} </p>
               <p>listing:</p>
               <li *ngFor="let list of seller._products"><a [routerLink]="['/products',list._id]">{{list.title}}</a></li>
+              <p><img style="width: 30px" src="http://hddfhm.com/images/clipart-messages-17.gif" [routerLink]="['/message']"/> Ask About Product</p>
           </span>
         </div>
     </div>
