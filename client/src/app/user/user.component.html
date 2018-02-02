@@ -25,7 +25,7 @@
             </span>
           </span>
           <span class="text">
-              <p>Name: {{loginuser.name}} <img style="width: 24px" src="http://hddfhm.com/images/clipart-messages-17.gif"/></p>
+              <p>Name: {{loginuser.name}}</p>
               <p>listing:</p>
               <li *ngFor="let list of loginuser._products"><a [routerLink]="['/products',list._id]">{{list.title}}</a></li>
           </span>
