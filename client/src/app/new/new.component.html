@@ -1,7 +1,7 @@
 <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Create Product</a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="right: 20px; position: absolute;">
-        <li class="nav-item active" [routerLink]="['']"> Cancel</li>
+        <li class="nav-item active" [routerLink]="['/productslist']"> Cancel</li>
     </ul>
 </nav>
 <div class="wrapper">
@@ -37,7 +37,7 @@
             </small>
                 <label for="catalog">Catalog</label>
                 <select name="catalog" [(ngModel)]="product.catalog" class="form-control" required #catalog="ngModel">
-                <option *ngFor="let c of category" [ngValue]="c">{{c}}</option>
+                <option *ngFor="let c of category; let i = index" [attr.data-index]="i" [ngValue]="i">{{c}}</option>
             </select>
                 <label for="hashtag">Hash Tag (Optional)</label>
                 <input type="text" name="url" [(ngModel)]="product.url" class="form-control">

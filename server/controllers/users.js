@@ -16,10 +16,10 @@ module.exports = {
             zipcode:req.body.zipcode
         })
         console.log(user);
-        user.save(req.body, function(err, data){
+        user.save(function(err, data){
             if (err) {
                 console.log("err",err);
-                res.json({ message: "error retrieving Users", err: err });
+                res.json({ message: "error creating Users", err: err });
             } else if (data) {
                 console.log("data",data)
                 const token = jwt.sign({userId: data._id}, config.secret, {expiresIn: '24h'});
@@ -42,13 +42,27 @@ module.exports = {
 
     update: function(req, res) {
         console.log("This is the update data", req.body);
-        User.update({ _id: req.params.id }, req.body, function(err, data) {
+        User.findOne({_id: req.params.id}, function(err, data){
             if (err) {
                 console.log(err);
-                res.json({ message: "error retrieving quotes", err: err });
-            } else if (data) {
-                const token = jwt.sign({userId: data._id}, config.secret, {expiresIn: '24h'});
-                res.json({ message: "Success", data: true, token: token, user: {username: data.name} })
+                res.json({ message: "Can't find by email", err: err });
+            } else {
+                    data.name = req.body.name,
+                    data.email =req.body.email,
+                    data.password =req.body.password,
+                    data.picture = req.body.picture,
+                    data. zipcode=req.body.zipcode
+                console.log(data);
+                data.save(function(err,data){
+                    if (err) {
+                        console.log("err",err);
+                        res.json({ message: "error retrieving Users", err: err });
+                    } else if (data) {
+                        console.log("data",data)
+                        const token = jwt.sign({userId: data._id}, config.secret, {expiresIn: '24h'});
+                        res.json({ message: "Success", data: true, token: token, user: {username: data.name} })
+                    }
+                })
             }
         })
     },

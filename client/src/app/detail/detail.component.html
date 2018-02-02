@@ -3,6 +3,7 @@
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="right: 29px; position: absolute;">
         <span *ngIf="login">
             <li class="nav-item active" [routerLink]="['']"> Home | </li>
+            <li class="nav-item active" [routerLink]="['/productslist']"> Back | </li>
             <li class="nav-item active" (click)="logout()"> Log Out </li>
         </span>
         <span *ngIf="!login">
