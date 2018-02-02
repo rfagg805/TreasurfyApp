@@ -1,9 +1,8 @@
 <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Product List</a>
+    <span *ngIf="product != undefined"><a class="navbar-brand" href="#">You are viewing {{product.title}}</a></span>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="right: 29px; position: absolute;">
         <span *ngIf="login">
-            <li class="nav-item active">
-                <img style="width: 24px" src="http://hddfhm.com/images/clipart-messages-17.gif" /> </li>
+            <li class="nav-item active" [routerLink]="['']"> Home | </li>
             <li class="nav-item active" (click)="logout()"> Log Out </li>
         </span>
         <span *ngIf="!login">
@@ -11,3 +10,18 @@
         </span>
     </ul>
 </nav>
+<div *ngIf="product != undefined">
+    <div class="display">
+        <div class="detail">
+            <img src="{{product.images}}" alt="{{product.title}}">
+            <span class="text">
+                <p>Name: {{product.title}}</p>
+                <p>Price: $ {{product.price}}</p>
+                <P>Description: {{product.description}}</P>
+                <P>Condition: {{product.condition}}</P>
+                <P>Catalog: {{product.catalog}}</P>
+                <p>Seller:<a [routerLink]="['/seller',product._user._id]">{{product._user.name}}</a><img style="width: 24px" src="http://hddfhm.com/images/clipart-messages-17.gif"/></p>
+            </span>
+        </div>
+    </div>
+</div>

@@ -39,6 +39,11 @@ export class HttpService {
     return this._http.get('/product')
   }
 
+  viewOneUser(id){
+    console.log(id);
+    return this._http.get(`/user/view/${id}`)
+  }
+
   create(newP){
     return this._http.post('/product',newP)
   }
@@ -61,9 +66,13 @@ export class HttpService {
     return this._http.post('/user',user)
   }
 
+  updateUser(user){
+    return this._http.patch(`/user/${user._id}`,user)
+  }
+
   login(user){
     console.log(user)
-    return this._http.patch('/user',user)
+    return this._http.patch('/loginuser',user)
   }
 
   storeUserData(token, user){

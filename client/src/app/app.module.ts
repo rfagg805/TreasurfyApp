@@ -17,6 +17,9 @@ import { LoginuserComponent } from './loginuser/loginuser.component';
 import { ValidateEqualDirective } from './validate-equal.directive';
 import { MessageComponent } from './message/message.component';
 import { DetailComponent } from './detail/detail.component';
+import { SellerdetailComponent } from './sellerdetail/sellerdetail.component';
+import { UserComponent } from './user/user.component';
+import { UsereditComponent } from './useredit/useredit.component';
 
 
 
@@ -33,6 +36,9 @@ import { DetailComponent } from './detail/detail.component';
     ValidateEqualDirective,
     MessageComponent,
     DetailComponent,
+    SellerdetailComponent,
+    UserComponent,
+    UsereditComponent,
   ],
   imports: [
     BrowserModule,
