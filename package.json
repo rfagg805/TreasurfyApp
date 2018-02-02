@@ -10,9 +10,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-
         "@agm/core": "^1.0.0-beta.2",
-
         "bcrypt-as-promised": "^1.1.0",
         "body-parser": "^1.18.2",
         "bootstrap": "^3.3.7",
@@ -28,7 +26,6 @@
         "mongoose-bcrypt": "^1.5.0",
         "mongoose-unique-validator": "^1.0.6",
         "socket.io": "^2.0.4"
-
     },
     "description": ""
 }

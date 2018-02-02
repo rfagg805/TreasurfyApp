@@ -59,7 +59,7 @@ export class UsereditComponent implements OnInit {
       if(data['data']){
         this._httpService.setUserLoggedIn();
         this._httpService.storeUserData(data['token'],data['user'])
-        this._router.navigateByUrl('');
+        this._router.navigateByUrl('productslist');
       }
       else if(data['err'].code == 11000){
         this.errors = "Email already exist"

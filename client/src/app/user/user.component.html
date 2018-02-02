@@ -4,6 +4,7 @@
         <span *ngIf="loginuser && login && loginuser._id == user">  
           <li class="nav-item active" [routerLink]="['/user/edit',loginuser._id]"> Edit |</li> 
           <li class="nav-item active" [routerLink]="['']"> Home | </li>
+          <li class="nav-item active" [routerLink]="['/productslist']"> Back | </li>
           <li class="nav-item active" (click)="logout()"> Log Out </li>
         </span>
         <span *ngIf="!login">
