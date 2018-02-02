@@ -1,0 +1,31 @@
+.nav-item {
+    color: white;
+    display: inline;
+}
+
+.display{
+    text-align: center;
+}
+
+.detail{
+    margin-left: 15%;
+    margin-top: 5%;
+    width: 70%;
+    height: 100%;
+    border: 1px solid black;
+    padding: 2%;
+    text-align: center;
+}
+
+img{
+    width:80%;
+}
+
+.text{
+    display: inline-block;
+    text-align: left;
+}
+
+.pic{
+    display: inline-block;
+}

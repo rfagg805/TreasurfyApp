@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from '../http.service';
-import { ValidateEqualDirective } from '../validate-equal.directive';
 
 @Component({
-  selector: 'app-createuser',
-  templateUrl: './createuser.component.html',
-  styleUrls: ['./createuser.component.css'],
+  selector: 'app-useredit',
+  templateUrl: './useredit.component.html',
+  styleUrls: ['./useredit.component.css']
 })
-export class CreateuserComponent implements OnInit {
+export class UsereditComponent implements OnInit {
+
+  updateuser;
+  loginuser;
+  login: Boolean;
 
   emailpattern = "^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$"
   // passwordpattern = "/^(?=.[A-Za-z])(?=.\d)[A-Za-z\d]{4,20}$/"
@@ -30,11 +33,28 @@ export class CreateuserComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.updateuser = this._httpService.loadToken();
+    console.log(this.user);
+    if(this.updateuser != undefined){
+      this.login = true;
+      console.log(this.login);
+      this._httpService.decoded(this.updateuser).subscribe(user =>{
+        console.log(user);
+        this.loginuser = user['id'];
+        this._httpService.viewOneUser(this.loginuser).subscribe(user=>{
+          this.user = user['data'][0];
+          console.log(this.user);
+        })
+      })
+    }
+    else{
+      this.login = false;
+    }
   }
 
-  createUser(){
+  updateUser(){
     console.log(this.user);
-    this._httpService.createUser(this.user).subscribe(data=>{
+    this._httpService.updateUser(this.user).subscribe(data=>{
       console.log(data);
       if(data['data']){
         this._httpService.setUserLoggedIn();
@@ -46,4 +66,5 @@ export class CreateuserComponent implements OnInit {
       }
     })
   }
+
 }

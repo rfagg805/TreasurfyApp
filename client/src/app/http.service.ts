@@ -23,6 +23,10 @@ export class HttpService {
     return this.authToken;
   }
 
+  decoded(token){
+    return this._http.get(`/user/${token}`)
+  }
+
   setUserLoggedIn(){
     this.isUserLoggedIn = true;
   }
@@ -33,6 +37,11 @@ export class HttpService {
 
   getAll(){
     return this._http.get('/product')
+  }
+
+  viewOneUser(id){
+    console.log(id);
+    return this._http.get(`/user/view/${id}`)
   }
 
   create(newP){
@@ -57,9 +66,13 @@ export class HttpService {
     return this._http.post('/user',user)
   }
 
+  updateUser(user){
+    return this._http.patch(`/user/${user._id}`,user)
+  }
+
   login(user){
     console.log(user)
-    return this._http.patch('/user',user)
+    return this._http.patch('/loginuser',user)
   }
 
   storeUserData(token, user){
@@ -73,6 +86,7 @@ export class HttpService {
     this.authToken = null;
     this.user = null;
     localStorage.clear();
+    window.location.reload();
   }
   
   createMessage(newM){

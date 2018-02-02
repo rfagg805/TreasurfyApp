@@ -1,0 +1,31 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Seller</a>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="right: 29px; position: absolute;">
+        <span *ngIf="login">   
+          <li class="nav-item active" [routerLink]="['']"> Home | </li>
+          <li class="nav-item active" (click)="logout()"> Log Out </li>
+        </span>
+        <span *ngIf="!login">
+            <li class="nav-item active" [routerLink]="['']"> Home </li>
+        </span>
+    </ul>
+</nav>
+<div *ngIf="seller != undefined">
+    <div class="display">
+        <div class="detail">
+          <span class="pic">
+            <span *ngIf="seller.picture == ''">
+              <img src="../assets/img/q.png" alt="nopic">
+            </span>
+            <span *ngIf="seller.picture!=''">
+              <img src="{{seller.picture}}" alt="{{seller.name}}">
+            </span>
+          </span>
+          <span class="text">
+              <p>Name: {{seller.name}} <img style="width: 24px" src="http://hddfhm.com/images/clipart-messages-17.gif"/></p>
+              <p>listing:</p>
+              <li *ngFor="let list of seller._products"><a [routerLink]="['/products',list._id]">{{list.title}}</a></li>
+          </span>
+        </div>
+    </div>
+</div>

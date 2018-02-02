@@ -36,12 +36,12 @@ const UserSchema = new mongoose.Schema({
         maxlength: [5, 'name need to be longer than 2.'],
 
     },
-    _message: {
+    _message: [{
         type: Schema.Types.ObjectId,
         ref: 'Message'
-    },
+    }],
 
-    _product: [{
+    _products: [{
         type: Schema.Types.ObjectId,
         ref: 'Product'
     }]

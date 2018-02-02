@@ -16,8 +16,14 @@ import { CreateuserComponent } from './createuser/createuser.component';
 import { LoginuserComponent } from './loginuser/loginuser.component';
 import { ValidateEqualDirective } from './validate-equal.directive';
 import { MessageComponent } from './message/message.component';
+
 import { ChatService } from './chat.service';
 import { AgmCoreModule } from '@agm/core';
+import { DetailComponent } from './detail/detail.component';
+import { SellerdetailComponent } from './sellerdetail/sellerdetail.component';
+import { UserComponent } from './user/user.component';
+import { UsereditComponent } from './useredit/useredit.component';
+
 
 
 
@@ -33,6 +39,10 @@ import { AgmCoreModule } from '@agm/core';
     LoginuserComponent,
     ValidateEqualDirective,
     MessageComponent,
+    DetailComponent,
+    SellerdetailComponent,
+    UserComponent,
+    UsereditComponent,
   ],
   imports: [
     BrowserModule,
