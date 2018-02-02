@@ -9,6 +9,15 @@ import { Router } from '@angular/router';
 })
 export class ProductComponent implements OnInit {
 
+    //google.api.key = AIzaSyDvj90Xz3fgsv1sQ1eWSsNr0lvXNnvF2Ys
+    latitude = 37.279518;
+    longitude = -121.867905;
+  
+    onChoseLocation(event){
+      this.latitude = event.coords.lat;
+      this.longitude = event.coords.lng;
+    }
+    
   products;
  
   user;

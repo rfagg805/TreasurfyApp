@@ -1,20 +1,26 @@
 <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Product List</a>
+    <a class="navbar-brand" href="#">Product List | </a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="right: 29px; position: absolute;">
         <span *ngIf="login && loginuser">
+                
             <li class="nav-item active">
                 <span *ngIf="loginuser.picture != ''"><a [routerLink]="['/userprofile',loginuser._id]"><img class="navpic" src="{{loginuser.picture}}" alt="{{loginuser.name}}"></a></span>
-                <span *ngIf="loginuser.picture == ''"><a [routerLink]="['/userprofile',loginuser._id]"><img class="navpic" src="../assets/img/q.png" alt="nopic" ></a></span>
-            </li>
-            <li class="nav-item active" [routerLink]="['/products/new']"> Sell New Product |</li>     
-            <li class="nav-item active" (click)="logout()"> Log Out </li>
+        <span *ngIf="loginuser.picture == ''"><a [routerLink]="['/userprofile',loginuser._id]"><img class="navpic" src="../assets/img/q.png" alt="nopic" ></a></span>
+        </li>
+        <li class="nav-item active" [routerLink]="['/products/new']"> Sell New Product |</li>
+        <li class="nav-item active" (click)="logout()"> Log Out </li>
         </span>
+
         <span *ngIf="!login">
             <li class="nav-item active" [routerLink]="['']"> Home </li>
         </span>
     </ul>
 </nav>
+<agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)">
+    <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+</agm-map>
 <div class="container">
+
     <div class="p" *ngFor="let p of products">
         <img src="{{p.images}}" alt="{{p.title}}">
         <h4>{{p.title}}</h4>

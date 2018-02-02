@@ -39,7 +39,3 @@ video {
     z-index: 2;
     position: fixed;
 }
-
-agm-map {
-    height: 125px;
-}
