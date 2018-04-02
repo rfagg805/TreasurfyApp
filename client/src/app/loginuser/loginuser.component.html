@@ -12,13 +12,20 @@
                 <label for="email">Email</label>
                 <input type="text" name="email" [(ngModel)]="user.email" class="form-control" required [pattern]=emailpattern #email="ngModel">
                 <small [hidden]="email.valid || (email.pristine && !f.submitted)">
-          <p>Email is required and in proper format</p>
-        </small>
+                    <p>Email is required and in proper format</p>
+                </small>
+                <span *ngIf="email_errors">
+                    <small>{{email_errors}}</small>
+                </span>
+                <br>
                 <label for="password">Password</label>
                 <input type="password" name="password" [(ngModel)]="user.password" class="form-control" required #password="ngModel">
                 <small [hidden]="password.valid || (password.pristine && !f.submitted)">
-          <p>Password is required</p>
-        </small>
+                    <p>Password is required</p>
+                </small>
+                <span *ngIf="pw_errors">
+                    <small>{{pw_errors}}</small>
+                </span>
                 <br>
                 <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Login</button>
                 <button [routerLink]="['']" class="btn btn-danger"> Cancel </button>

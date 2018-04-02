@@ -11,7 +11,8 @@ import { ValidateEqualDirective } from '../validate-equal.directive';
 export class LoginuserComponent implements OnInit {
 
   emailpattern = "^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$"
-
+  email_errors;
+  pw_errors;
   user = {
     email:'',
     password:''
@@ -28,7 +29,18 @@ export class LoginuserComponent implements OnInit {
   login(){
     this._httpService.login(this.user).subscribe(data =>{
       console.log(data);
-      if(data['data'] == true){
+      if(data['data']== false){
+        if(data['type'] == 'email'){
+          this.email_errors = data['message']; 
+        }
+
+        else if(data['type']== 'pw'){
+          // console.log(data['message']);
+          this.pw_errors = data['message']
+        } 
+      }
+      else{
+        console.log(data['data']);
         this._httpService.setUserLoggedIn();
         this._httpService.storeUserData(data['token'],data['user'])
         this._router.navigateByUrl('');

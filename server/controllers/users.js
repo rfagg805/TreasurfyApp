@@ -70,27 +70,24 @@ module.exports = {
     login: function(req, res){
         console.log("login", req.body);
         User.findOne({email: req.body.email}, function(err, data){
-            if (err) {
-                console.log(err);
-                res.json({ message: "Can't find by email", err: err });
-            } else {
-                if(data != null){
-                    data.comparePassword(req.body.password, function(err,isMatch){
-                        if(err){
-                            console.log(err);
-                            res.json({ message: "error", err: isMatch });
-                        }
-                        else{
-                            console.log(isMatch);
-                            const token = jwt.sign({userId: data._id}, config.secret, {expiresIn: '24h'});
-                            res.json({ message: "Success", data: isMatch, token: token, user: {username: data.name} })
-                        }
-                    })
-                }
-                else{
-                    res.json({ message: "Can't find by email", err: data });
-                }
+            if(data != null){
+                data.comparePassword(req.body.password, function(err,isMatch){
+                    console.log(isMatch);
+
+                    if(isMatch != true){
+                        res.json({ type: 'pw', message: "Password doesn't match", data: isMatch })
+                    }
+                    else{
+                        const token = jwt.sign({userId: data._id}, config.secret, {expiresIn: '24h'});
+                        res.json({ message: "Success", data: isMatch, token: token, user: {username: data.name} })
+                    }
+                })
             }
+            else{
+                console.log(err);
+                res.json({ type: 'email', message: "Can't find by email", data: false });
+            }
+
         })
     },
 

@@ -27,8 +27,6 @@ routes_setter(app)
 //socketIO
 let http = require('http');
 
-let socketIO = require('socket.io');
-
 // - - - - = = = = Server Listener = = = = - - - - 
 const server = app.listen(8000, function() {
     console.log("listening on port 8000");
@@ -37,7 +35,7 @@ const server = app.listen(8000, function() {
 const io = require('socket.io').listen(server);
 
 io.on('connection', (socket) => {
-    console.log('user connected');
+    console.log('user connected', socket.id);
 
     socket.on('new-message', (message) => {
         io.emit('new-message', message);
